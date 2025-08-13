@@ -5,40 +5,40 @@ import { useState, useEffect, useRef } from "react"
 const accessories = [
   {
     name: "Luxury Watches",
-    price: "₹15,000 - ₹50,000",
+    price: "₹2,000 - ₹10,000",
     image: "/luxury-colorful-watches.png",
     description: "Premium timepieces for every occasion",
   },
   {
     name: "Designer Perfumes",
     price: "₹2,500 - ₹8,000",
-    image: "/placeholder-q6m0b.png",
+    image: "/fragrances-collections.jpg",
     description: "Captivating fragrances that define you",
   },
-  {
-    name: "Fashion Jewelry",
-    price: "₹1,200 - ₹12,000",
-    image: "/placeholder-3fj3i.png",
-    description: "Statement pieces to complete your look",
-  },
-  {
-    name: "Designer Bags",
-    price: "₹3,000 - ₹25,000",
-    image: "/placeholder-yvrvv.png",
-    description: "Stylish bags for every lifestyle",
-  },
+  // {
+  //   name: "Fashion Jewelry",
+  //   price: "₹1,200 - ₹12,000",
+  //   image: "/placeholder-3fj3i.png",
+  //   description: "Statement pieces to complete your look",
+  // },
+  // {
+  //   name: "Designer Bags",
+  //   price: "₹3,000 - ₹25,000",
+  //   image: "/placeholder-yvrvv.png",
+  //   description: "Stylish bags for every lifestyle",
+  // },
   {
     name: "Sunglasses",
     price: "₹1,500 - ₹8,000",
-    image: "/trendy-colorful-sunglasses.png",
+    image: "/trendy-colorful-sunglasses.jpg",
     description: "Trendy eyewear for the fashion-forward",
   },
-  {
-    name: "Fashion Scarves",
-    price: "₹800 - ₹3,500",
-    image: "/placeholder-jqefx.png",
-    description: "Elegant scarves to elevate any outfit",
-  },
+  // {
+  //   name: "Fashion Scarves",
+  //   price: "₹800 - ₹3,500",
+  //   image: "/placeholder-jqefx.png",
+  //   description: "Elegant scarves to elevate any outfit",
+  // },
 ]
 
 export default function AccessoriesLifestyle() {

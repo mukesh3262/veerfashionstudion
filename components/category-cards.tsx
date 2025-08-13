@@ -8,13 +8,13 @@ const categories = [
   {
     name: "Men",
     href: "/categories/men",
-    image: "/stylish-mens-fashion.png",
+    image: "/mens-collection.jpg",
     gradient: "from-blue-600/80 to-purple-600/80",
   },
   {
     name: "Women",
     href: "/categories/women",
-    image: "/elegant-colorful-dresses.png",
+    image: "/women-collections.jpg",
     gradient: "from-pink-500/80 to-rose-600/80",
   },
   // {
