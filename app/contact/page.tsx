@@ -55,7 +55,7 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-black mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-serif text-xl font-semibold text-black mb-2">Email</h3>
-                      <p className="text-gray-600">info@veerfashionstudio.com</p>
+                      <p className="text-gray-600">info@veermenstudio.com</p>
                     </div>
                   </div>
                 </CardContent>

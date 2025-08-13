@@ -3,23 +3,26 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link"
 
 const heroSlides = [
   {
+    href: "/collections",
     image: "/luxury-mens-fashion.jpg",
     title: "Men's Luxury Line",
     subtitle: "Sophisticated & Modern",
     description: "Crafted for the discerning gentleman",
     position: "right",
   },
+  // {
+  //   image: "/designer-womens-collection.jpg",
+  //   title: "Designer Women's Collection",
+  //   subtitle: "Elegance Redefined",
+  //   description: "Where fashion meets artistry",
+  //   position: "left",
+  // },
   {
-    image: "/designer-womens-collection.jpg",
-    title: "Designer Women's Collection",
-    subtitle: "Elegance Redefined",
-    description: "Where fashion meets artistry",
-    position: "left",
-  },
-  {
+    href: "/collections",
     image: "/premium-fashion-collection.jpg",
     title: "Premium Fashion Collection",
     subtitle: "Elevate Your Wardrobe",
@@ -69,6 +72,7 @@ export default function Hero() {
               index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
             }`}
           >
+            {/* Background Image */}
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-1000"
               style={{
@@ -102,12 +106,14 @@ export default function Hero() {
                   >
                     {slide.description}
                   </p>
-                  <Button
-                    size="lg"
-                    className="bg-white hover:bg-gray-100 text-black hover:scale-105 transition-all duration-300 px-8 py-3 text-lg font-medium tracking-wide shadow-2xl border-0"
-                  >
-                    Explore Collections
-                  </Button>
+                  <Link href={slide.href}>
+                    <Button
+                      size="lg"
+                      className="bg-white hover:bg-gray-100 text-black hover:scale-105 transition-all duration-300 px-8 py-3 text-lg font-medium tracking-wide shadow-2xl border-0"
+                    >
+                      Explore Collections
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

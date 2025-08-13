@@ -2,12 +2,19 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { usePathname } from "next/navigation"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  const isActive = (path: string) => {
+    if (path === "/" && pathname === "/") return true
+    if (path !== "/" && pathname.startsWith(path)) return true
+    return false
+  }
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -15,56 +22,79 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <h1 className="font-serif text-2xl font-bold text-black tracking-wide">VFS</h1>
+            <h1 className="font-serif text-2xl font-bold text-black tracking-wide">VMS</h1>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-black hover:text-gray-600 transition-colors font-medium">
+            <Link
+              href="/"
+              className={`transition-colors font-medium pb-1 border-b-2 ${
+                isActive("/")
+                  ? "text-black border-black"
+                  : "text-gray-600 hover:text-black border-transparent hover:border-gray-300"
+              }`}
+            >
               Home
             </Link>
-
-            {/* <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-black hover:text-gray-600 transition-colors font-medium">
-                Categories
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white border border-gray-200">
-                <DropdownMenuItem>
-                  <Link href="/categories/men" className="w-full">
-                    Men
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/categories/women" className="w-full">
-                    Women
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/categories/kids" className="w-full">
-                    Kids
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/categories/watches" className="w-full">
-                    Watches
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu> */}
-            <Link href="/categories/men" className="text-black hover:text-gray-600 transition-colors font-medium">
-              Mens
+            <Link
+              href="/collections"
+              className={`transition-colors font-medium pb-1 border-b-2 ${
+                isActive("/collections")
+                  ? "text-black border-black"
+                  : "text-gray-600 hover:text-black border-transparent hover:border-gray-300"
+              }`}
+            >
+              Collections
             </Link>
-            <Link href="/categories/women" className="text-black hover:text-gray-600 transition-colors font-medium">
-              Womens
+            <Link
+              href="/watches"
+              className={`transition-colors font-medium pb-1 border-b-2 ${
+                isActive("/watches")
+                  ? "text-black border-black"
+                  : "text-gray-600 hover:text-black border-transparent hover:border-gray-300"
+              }`}
+            >
+              Watches
             </Link>
-            <Link href="/about" className="text-black hover:text-gray-600 transition-colors font-medium">
-              About Us
+            <Link
+              href="/watches"
+              className={`transition-colors font-medium pb-1 border-b-2 ${
+                isActive("/watches")
+                  ? "text-black border-black"
+                  : "text-gray-600 hover:text-black border-transparent hover:border-gray-300"
+              }`}
+            >
+              Fragrances
             </Link>
-            <Link href="/social" className="text-black hover:text-gray-600 transition-colors font-medium">
+            <Link
+              href="/social"
+              className={`transition-colors font-medium pb-1 border-b-2 ${
+                isActive("/social")
+                  ? "text-black border-black"
+                  : "text-gray-600 hover:text-black border-transparent hover:border-gray-300"
+              }`}
+            >
               Social
             </Link>
-            <Link href="/contact" className="text-black hover:text-gray-600 transition-colors font-medium">
+            <Link
+              href="/about"
+              className={`transition-colors font-medium pb-1 border-b-2 ${
+                isActive("/about")
+                  ? "text-black border-black"
+                  : "text-gray-600 hover:text-black border-transparent hover:border-gray-300"
+              }`}
+            >
+              About Us
+            </Link>
+            <Link
+              href="/contact"
+              className={`transition-colors font-medium pb-1 border-b-2 ${
+                isActive("/contact")
+                  ? "text-black border-black"
+                  : "text-gray-600 hover:text-black border-transparent hover:border-gray-300"
+              }`}
+            >
               Contact Us
             </Link>
           </nav>
@@ -79,33 +109,60 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-black hover:text-gray-600 transition-colors font-medium">
+              <Link
+                href="/"
+                className={`transition-colors ${
+                  isActive("/") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
+                }`}
+              >
                 Home
               </Link>
-              <div className="space-y-2">
-                <p className="text-black font-medium">Categories</p>
-                <div className="pl-4 space-y-2">
-                  <Link href="/categories/men" className="block text-gray-600 hover:text-black transition-colors">
-                    Men
-                  </Link>
-                  <Link href="/categories/women" className="block text-gray-600 hover:text-black transition-colors">
-                    Women
-                  </Link>
-                  <Link href="/categories/kids" className="block text-gray-600 hover:text-black transition-colors">
-                    Kids
-                  </Link>
-                  <Link href="/categories/watches" className="block text-gray-600 hover:text-black transition-colors">
-                    Watches
-                  </Link>
-                </div>
-              </div>
-              <Link href="/about" className="text-black hover:text-gray-600 transition-colors font-medium">
+              <Link
+                href="/collections"
+                className={`transition-colors ${
+                  isActive("/collections") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
+                }`}
+              >
+                Collections
+              </Link>
+              <Link
+                href="/watches"
+                className={`transition-colors ${
+                  isActive("/watches") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
+                }`}
+              >
+                Watches
+              </Link>
+              <Link
+                href="/watches"
+                className={`transition-colors ${
+                  isActive("/watches") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
+                }`}
+              >
+                Fragrances
+              </Link>
+              <Link
+                href="/social"
+                className={`transition-colors ${
+                  isActive("/social") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
+                }`}
+              >
+                Social
+              </Link>
+              <Link
+                href="/about"
+                className={`transition-colors ${
+                  isActive("/about") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
+                }`}
+              >
                 About Us
               </Link>
-              <Link href="/social" className="text-black hover:text-gray-600 transition-colors font-medium">
-                Social Media
-              </Link>
-              <Link href="/contact" className="text-black hover:text-gray-600 transition-colors font-medium">
+              <Link
+                href="/contact"
+                className={`transition-colors ${
+                  isActive("/contact") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
+                }`}
+              >
                 Contact Us
               </Link>
             </div>

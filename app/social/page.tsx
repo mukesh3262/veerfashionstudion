@@ -198,7 +198,7 @@ export default function SocialMediaPage() {
           <h2 className="font-serif text-3xl font-bold text-black mb-6">Join Our Fashion Community</h2>
           <p className="text-xl text-gray-600 mb-8">
             Don't miss out on the latest fashion trends, exclusive offers, and style inspiration. Follow us on social
-            media and be part of the Veer Fashion Studio family.
+            media and be part of the Veer Men Studio family.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -207,14 +207,14 @@ export default function SocialMediaPage() {
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
             >
               <Instagram className="w-5 h-5 mr-2" />
-              @veerfashionstudio
+              @veermenstudio
             </Button>
             <Button
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
             >
               <Facebook className="w-5 h-5 mr-2" />
-              Veer Fashion Studio
+              Veer Men Studio
             </Button>
           </div>
         </div>

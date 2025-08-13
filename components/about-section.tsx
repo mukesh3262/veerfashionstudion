@@ -4,10 +4,10 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-black">About Veer Fashion Studio</h2>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-black">About Veer Men Studio</h2>
             <div className="w-20 h-1 bg-black"></div>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Founded with a passion for timeless elegance, Veer Fashion Studio has been redefining style for the modern
+              Founded with a passion for timeless elegance, Veer Men Studio has been redefining style for the modern
               individual. Our curated collections blend contemporary trends with classic sophistication.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
@@ -22,7 +22,7 @@ export default function AboutSection() {
           <div className="relative">
             <img
               src="/elegant-bw-fashion-store.png"
-              alt="Veer Fashion Studio Interior"
+              alt="Veer Men Studio Interior"
               className="w-full h-[600px] object-cover rounded-lg shadow-2xl"
             />
             <div className="absolute inset-0 bg-black bg-opacity-10 rounded-lg"></div>

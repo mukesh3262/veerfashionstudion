@@ -46,7 +46,7 @@ export default function ContactCTA() {
             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-black">Visit Our Store</h2>
             <div className="w-20 h-1 bg-black mb-8"></div>
             <p className="text-xl mb-8 leading-relaxed text-gray-700">
-              Experience Veer Fashion Studio in person. Our flagship store offers a curated shopping experience where style
+              Experience Veer Men Studio in person. Our flagship store offers a curated shopping experience where style
               meets sophistication.
             </p>
 
@@ -132,7 +132,7 @@ export default function ContactCTA() {
                   <p className="text-gray-600">
                     Phone: (555) 123-4567
                     <br />
-                    Email: info@veerfashionstudio.com
+                    Email: info@veermenstudio.com
                   </p>
                 </div>
               </div>

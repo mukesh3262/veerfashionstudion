@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Instagram, Facebook, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const socialPosts = [
   {
@@ -65,7 +66,7 @@ export default function SocialMediaGallery() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl font-bold text-black mb-4">Follow Our Journey</h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
-            Stay connected with the latest fashion trends and behind-the-scenes moments from Veer Fashion Studio
+            Stay connected with the latest fashion trends and behind-the-scenes moments from Veer Men Studio
           </p>
 
           {/* Social Media Buttons with Color Accents */}
@@ -144,12 +145,14 @@ export default function SocialMediaGallery() {
 
         {/* View More Button */}
         <div className="text-center mt-12">
-          <Button
-            variant="outline"
-            className="border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 px-8 py-3 rounded-full bg-transparent"
-          >
-            View More Posts
-          </Button>
+          <Link href="/social">
+            <Button
+              variant="outline"
+              className="border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 px-8 py-3 rounded-full bg-transparent"
+            >
+              View More Posts
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand Section */}
           <div className="space-y-6">
-            <h3 className="font-serif text-3xl font-bold">Veer Fashion Studio</h3>
+            <h3 className="font-serif text-3xl font-bold">Veer Men Studio</h3>
             <p className="text-gray-300 leading-relaxed">
               Your destination for premium fashion that defines your unique style. Experience elegance, quality, and
               sophistication in every piece.
@@ -43,7 +43,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-gray-400" />
-                <p className="text-gray-300">info@veerfashionstudio.com</p>
+                <p className="text-gray-300">info@veermenstudio.com</p>
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-          <p className="text-gray-400">© 2024 Veer Fashion Studio. All rights reserved. | Style that defines you.</p>
+          <p className="text-gray-400">© 2024 Veer Men Studio. All rights reserved. | Style that defines you.</p>
         </div>
       </div>
     </footer>
