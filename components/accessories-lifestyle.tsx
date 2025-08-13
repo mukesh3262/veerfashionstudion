@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import Image from "next/image";
 
 const accessories = [
   {
@@ -15,30 +16,12 @@ const accessories = [
     image: "/fragrances-collections.jpg",
     description: "Captivating fragrances that define you",
   },
-  // {
-  //   name: "Fashion Jewelry",
-  //   price: "₹1,200 - ₹12,000",
-  //   image: "/placeholder-3fj3i.png",
-  //   description: "Statement pieces to complete your look",
-  // },
-  // {
-  //   name: "Designer Bags",
-  //   price: "₹3,000 - ₹25,000",
-  //   image: "/placeholder-yvrvv.png",
-  //   description: "Stylish bags for every lifestyle",
-  // },
   {
     name: "Sunglasses",
     price: "₹1,500 - ₹8,000",
     image: "/trendy-colorful-sunglasses.jpg",
     description: "Trendy eyewear for the fashion-forward",
   },
-  // {
-  //   name: "Fashion Scarves",
-  //   price: "₹800 - ₹3,500",
-  //   image: "/placeholder-jqefx.png",
-  //   description: "Elegant scarves to elevate any outfit",
-  // },
 ]
 
 export default function AccessoriesLifestyle() {
@@ -59,7 +42,7 @@ export default function AccessoriesLifestyle() {
           }
         })
       },
-      { threshold: 0.2 },
+      { threshold: 0.2 }
     )
 
     itemRefs.current.forEach((ref) => {
@@ -73,7 +56,9 @@ export default function AccessoriesLifestyle() {
     <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Accessories & Lifestyle</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+            Accessories & Lifestyle
+          </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Complete your look with our curated collection of premium accessories
           </p>
@@ -90,9 +75,19 @@ export default function AccessoriesLifestyle() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
-                <img
+                {/* <img
                   src={item.image || "/placeholder.svg"}
                   alt={item.name}
+                  loading="lazy" // <-- Lazy loading added
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                /> */}
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={300}
+                  height={300}
+                  priority={false}
+                  quality={50}
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

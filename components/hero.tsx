@@ -27,15 +27,13 @@ const heroSlides = [
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({})
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({ 0: true }) // first slide instantly "loaded"
 
   useEffect(() => {
     if (!isAutoPlaying) return
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
     }, 5000)
-
     return () => clearInterval(interval)
   }, [isAutoPlaying])
 
@@ -61,82 +59,88 @@ export default function Hero() {
   return (
     <section className="relative h-screen overflow-hidden">
       <div className="relative h-full">
-        {heroSlides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-              index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
-            }`}
-          >
-            {/* Preload hidden image with lazy loading */}
-            {!loadedImages[index] && (
-              <img
-                src={slide.image}
-                alt={slide.title}
-                loading="lazy"
-                className="absolute w-0 h-0 opacity-0"
-                onLoad={() => handleImageLoad(index)}
-              />
-            )}
+        {heroSlides.map((slide, index) => {
+          const showBg = loadedImages[index] || index === currentSlide
 
-            {/* Background Image after loaded */}
-            {loadedImages[index] && (
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-1000"
-                style={{
-                  backgroundImage: `url(${slide.image})`,
-                  transform: index === currentSlide ? "scale(1)" : "scale(1.1)",
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60"></div>
-              </div>
-            )}
-
-            {/* Slide Content */}
+          return (
             <div
-              className={`relative z-10 h-full flex items-center ${
-                slide.position === "left" ? "justify-start pl-12 md:pl-20" : "justify-end pr-12 md:pr-20"
+              key={index}
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
               }`}
             >
+              {/* Preload image */}
+              {!loadedImages[index] && (
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  loading="lazy"
+                  width={10} // tiny footprint so browser loads it
+                  height={10}
+                  style={{ position: "absolute", opacity: 0 }}
+                  onLoad={() => handleImageLoad(index)}
+                />
+              )}
+
+              {/* Background Image */}
+              {showBg && (
+                <div
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-1000"
+                  style={{
+                    backgroundImage: `url(${slide.image})`,
+                    transform: index === currentSlide ? "scale(1)" : "scale(1.1)",
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60"></div>
+                </div>
+              )}
+
+              {/* Content */}
               <div
-                className={`text-white max-w-2xl ${
-                  slide.position === "left" ? "text-left" : "text-right"
+                className={`relative z-10 h-full flex items-center ${
+                  slide.position === "left" ? "justify-start pl-12 md:pl-20" : "justify-end pr-12 md:pr-20"
                 }`}
               >
                 <div
-                  className={`transition-all duration-1000 delay-300 ${
-                    index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  className={`text-white max-w-2xl ${
+                    slide.position === "left" ? "text-left" : "text-right"
                   }`}
                 >
-                  <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-wide">
-                    {slide.title}
-                  </h1>
-                  <p className="text-lg md:text-xl lg:text-2xl mb-2 font-light tracking-wide text-white/90">
-                    {slide.subtitle}
-                  </p>
-                  <p
-                    className={`text-base md:text-lg lg:text-xl mb-8 font-light text-white/80 max-w-lg ${
-                      slide.position === "right" ? "ml-auto" : ""
+                  <div
+                    className={`transition-all duration-1000 delay-300 ${
+                      index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                     }`}
                   >
-                    {slide.description}
-                  </p>
-                  <Link href={slide.href}>
-                    <Button
-                      size="lg"
-                      className="bg-white hover:bg-gray-100 text-black hover:scale-105 transition-all duration-300 px-8 py-3 text-lg font-medium tracking-wide shadow-2xl border-0"
+                    <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-wide">
+                      {slide.title}
+                    </h1>
+                    <p className="text-lg md:text-xl lg:text-2xl mb-2 font-light tracking-wide text-white/90">
+                      {slide.subtitle}
+                    </p>
+                    <p
+                      className={`text-base md:text-lg lg:text-xl mb-8 font-light text-white/80 max-w-lg ${
+                        slide.position === "right" ? "ml-auto" : ""
+                      }`}
                     >
-                      Explore Collections
-                    </Button>
-                  </Link>
+                      {slide.description}
+                    </p>
+                    <Link href={slide.href}>
+                      <Button
+                        size="lg"
+                        className="bg-white hover:bg-gray-100 text-black hover:scale-105 transition-all duration-300 px-8 py-3 text-lg font-medium tracking-wide shadow-2xl border-0"
+                      >
+                        Explore Collections
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Arrows */}
       <button
         onClick={prevSlide}
         className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
@@ -153,7 +157,7 @@ export default function Hero() {
         <ChevronRight className="w-6 h-6 text-black" />
       </button>
 
-      {/* Slide Indicators */}
+      {/* Indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
         {heroSlides.map((_, index) => (
           <button
