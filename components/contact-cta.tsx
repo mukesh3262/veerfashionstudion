@@ -1,7 +1,8 @@
 "use client"
 
-import type React from "react"
+import React from "react"
 import { useState } from "react"
+import emailjs from "emailjs-com"
 
 export default function ContactCTA() {
   const [formData, setFormData] = useState({
@@ -9,11 +10,36 @@ export default function ContactCTA() {
     email: "",
     message: "",
   })
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Handle form submission
-    console.log("Form submitted:", formData)
+    setLoading(true)
+    setStatus("")
+
+    emailjs
+      .send(
+        "service_pw4usxr", // from EmailJS
+        "template_uc4ygk9", // from EmailJS
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "MJbnmcSWVcwrhuJaW" // from EmailJS
+      )
+      .then(() => {
+        setStatus("Message sent successfully!")
+        setFormData({ name: "", email: "", message: "" })
+      })
+      .catch(() => {
+        setStatus("Failed to send message. Please try again.")
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -22,6 +48,12 @@ export default function ContactCTA() {
       [e.target.name]: e.target.value,
     })
   }
+
+  
+  React.useEffect(() => {
+    const timer = status && setTimeout(() => setStatus(""), 5000)
+    return () => clearTimeout(timer)
+  }, [status])
 
   return (
     <section className="relative py-20 overflow-hidden bg-white">
@@ -192,10 +224,12 @@ export default function ContactCTA() {
 
               <button
                 type="submit"
+                disabled={loading}
                 className="w-full bg-black text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
+              {status && <p className="text-green-600">{status}</p>}
             </form>
           </div>
         </div>
