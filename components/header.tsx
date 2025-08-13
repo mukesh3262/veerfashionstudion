@@ -58,9 +58,9 @@ export default function Header() {
               Watches
             </Link>
             <Link
-              href="/watches"
+              href="/fragrances"
               className={`transition-colors font-medium pb-1 border-b-2 ${
-                isActive("/watches")
+                isActive("/fragrances")
                   ? "text-black border-black"
                   : "text-gray-600 hover:text-black border-transparent hover:border-gray-300"
               }`}
@@ -134,9 +134,9 @@ export default function Header() {
                 Watches
               </Link>
               <Link
-                href="/watches"
+                href="/fragrances"
                 className={`transition-colors ${
-                  isActive("/watches") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
+                  isActive("/fragrances") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
                 }`}
               >
                 Fragrances

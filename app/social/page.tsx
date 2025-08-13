@@ -1,10 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Instagram, Facebook, ExternalLink, Heart, MessageCircle, Share } from "lucide-react"
+import { useState } from "react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import {
+  ExternalLink,
+  Heart,
+  MessageCircle,
+  Share,
+} from "lucide-react";
+import { Instagram } from "@/components/ui/custom-icons/instagram"; // 👈 custom import
+import { Facebook } from "@/components/ui/custom-icons/facebook"; // 👈 custom import
 
 const socialPosts = [
   {
@@ -20,7 +27,8 @@ const socialPosts = [
     id: 2,
     platform: "facebook",
     image: "/vibrant-mens-fashion-post.png",
-    caption: "Discover our premium men's collection - where sophistication meets style",
+    caption:
+      "Discover our premium men's collection - where sophistication meets style",
     likes: 189,
     comments: 12,
     date: "3 days ago",
@@ -38,7 +46,8 @@ const socialPosts = [
     id: 4,
     platform: "facebook",
     image: "/kids-fashion-colorful-post.png",
-    caption: "Adorable kids collection - comfort meets style for your little ones",
+    caption:
+      "Adorable kids collection - comfort meets style for your little ones",
     likes: 156,
     comments: 8,
     date: "1 week ago",
@@ -56,15 +65,16 @@ const socialPosts = [
     id: 6,
     platform: "facebook",
     image: "/fashion-lifestyle-post.png",
-    caption: "Fashion is not just clothing, it's a lifestyle. Experience Veer Fashion",
+    caption:
+      "Fashion is not just clothing, it's a lifestyle. Experience Veer Fashion",
     likes: 203,
     comments: 19,
     date: "2 weeks ago",
   },
-]
+];
 
 export default function SocialMediaPage() {
-  const [hoveredPost, setHoveredPost] = useState<number | null>(null)
+  const [hoveredPost, setHoveredPost] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-white">
@@ -73,10 +83,13 @@ export default function SocialMediaPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-50 to-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-black mb-6">Follow Our Journey</h1>
+          <h1 className="font-serif text-4xl md:text-5xl font-bold text-black mb-6">
+            Follow Our Journey
+          </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Stay connected with Veer Fashion and discover the latest trends, behind-the-scenes moments, and style
-            inspiration from our social media community.
+            Stay connected with Veer Fashion and discover the latest trends,
+            behind-the-scenes moments, and style inspiration from our social
+            media community.
           </p>
 
           {/* Social Media Buttons */}
@@ -85,7 +98,7 @@ export default function SocialMediaPage() {
               size="lg"
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
             >
-              <Instagram className="w-5 h-5 mr-2" />
+              <Instagram className="w-4 h-4 mr-1" />
               Follow on Instagram
             </Button>
             <Button
@@ -102,7 +115,9 @@ export default function SocialMediaPage() {
       {/* Social Media Grid */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif text-3xl font-bold text-black text-center mb-12">Latest Posts</h2>
+          <h2 className="font-serif text-3xl font-bold text-black text-center mb-12">
+            Latest Posts
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {socialPosts.map((post) => (
@@ -115,7 +130,9 @@ export default function SocialMediaPage() {
                 {/* Post Image */}
                 <div className="relative overflow-hidden">
                   <img
-                    src={`/placeholder_image.png?height=300&width=400&text=${encodeURIComponent("Fashion Post " + post.id)}`}
+                    src={`/placeholder_image.png?height=300&width=400&text=${encodeURIComponent(
+                      "Fashion Post " + post.id
+                    )}`}
                     alt={`Social media post ${post.id}`}
                     className="w-full h-64 object-cover transition-transform duration-300 hover:scale-110"
                   />
@@ -124,7 +141,9 @@ export default function SocialMediaPage() {
                   <div className="absolute top-4 left-4">
                     <div
                       className={`flex items-center px-3 py-1 rounded-full text-white text-sm font-medium ${
-                        post.platform === "instagram" ? "bg-gradient-to-r from-purple-500 to-pink-500" : "bg-blue-600"
+                        post.platform === "instagram"
+                          ? "bg-gradient-to-r from-purple-500 to-pink-500"
+                          : "bg-blue-600"
                       }`}
                     >
                       {post.platform === "instagram" ? (
@@ -139,7 +158,10 @@ export default function SocialMediaPage() {
                   {/* Hover Overlay */}
                   {hoveredPost === post.id && (
                     <div className="absolute inset-0 bg-black/50 flex items-center justify-center transition-opacity duration-300">
-                      <Button size="sm" className="bg-white text-black hover:bg-gray-100 rounded-full px-6">
+                      <Button
+                        size="sm"
+                        className="bg-white text-black hover:bg-gray-100 rounded-full px-6"
+                      >
                         <ExternalLink className="w-4 h-4 mr-2" />
                         View Post
                       </Button>
@@ -149,7 +171,9 @@ export default function SocialMediaPage() {
 
                 {/* Post Content */}
                 <div className="p-6">
-                  <p className="text-gray-800 mb-4 line-clamp-3">{post.caption}</p>
+                  <p className="text-gray-800 mb-4 line-clamp-3">
+                    {post.caption}
+                  </p>
 
                   {/* Post Stats */}
                   <div className="flex items-center justify-between text-gray-500 text-sm mb-4">
@@ -195,10 +219,13 @@ export default function SocialMediaPage() {
       {/* Call to Action */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-serif text-3xl font-bold text-black mb-6">Join Our Fashion Community</h2>
+          <h2 className="font-serif text-3xl font-bold text-black mb-6">
+            Join Our Fashion Community
+          </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Don't miss out on the latest fashion trends, exclusive offers, and style inspiration. Follow us on social
-            media and be part of the Veer Men Studio family.
+            Don't miss out on the latest fashion trends, exclusive offers, and
+            style inspiration. Follow us on social media and be part of the Veer
+            Men Studio family.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -222,5 +249,5 @@ export default function SocialMediaPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
