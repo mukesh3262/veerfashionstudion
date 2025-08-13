@@ -14,13 +14,6 @@ const heroSlides = [
     description: "Crafted for the discerning gentleman",
     position: "right",
   },
-  // {
-  //   image: "/designer-womens-collection.jpg",
-  //   title: "Designer Women's Collection",
-  //   subtitle: "Elegance Redefined",
-  //   description: "Where fashion meets artistry",
-  //   position: "left",
-  // },
   {
     href: "/collections",
     image: "/premium-fashion-collection.jpg",
@@ -29,12 +22,12 @@ const heroSlides = [
     description: "Discover timeless elegance and contemporary style",
     position: "left",
   },
- 
 ]
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({})
 
   useEffect(() => {
     if (!isAutoPlaying) return
@@ -61,9 +54,12 @@ export default function Hero() {
     setIsAutoPlaying(false)
   }
 
+  const handleImageLoad = (index: number) => {
+    setLoadedImages((prev) => ({ ...prev, [index]: true }))
+  }
+
   return (
     <section className="relative h-screen overflow-hidden">
-      {/* Carousel Container */}
       <div className="relative h-full">
         {heroSlides.map((slide, index) => (
           <div
@@ -72,35 +68,54 @@ export default function Hero() {
               index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
             }`}
           >
-            {/* Background Image */}
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-1000"
-              style={{
-                backgroundImage: `url(${slide.image})`,
-                transform: index === currentSlide ? "scale(1)" : "scale(1.1)",
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60"></div>
-            </div>
+            {/* Preload hidden image with lazy loading */}
+            {!loadedImages[index] && (
+              <img
+                src={slide.image}
+                alt={slide.title}
+                loading="lazy"
+                className="absolute w-0 h-0 opacity-0"
+                onLoad={() => handleImageLoad(index)}
+              />
+            )}
 
-            {/* Content */}
+            {/* Background Image after loaded */}
+            {loadedImages[index] && (
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-1000"
+                style={{
+                  backgroundImage: `url(${slide.image})`,
+                  transform: index === currentSlide ? "scale(1)" : "scale(1.1)",
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60"></div>
+              </div>
+            )}
+
+            {/* Slide Content */}
             <div
-              className={`relative z-10 h-full flex items-center ${slide.position === "left" ? "justify-start pl-12 md:pl-20" : "justify-end pr-12 md:pr-20"}`}
+              className={`relative z-10 h-full flex items-center ${
+                slide.position === "left" ? "justify-start pl-12 md:pl-20" : "justify-end pr-12 md:pr-20"
+              }`}
             >
-              <div className={`text-white max-w-2xl ${slide.position === "left" ? "text-left" : "text-right"}`}>
+              <div
+                className={`text-white max-w-2xl ${
+                  slide.position === "left" ? "text-left" : "text-right"
+                }`}
+              >
                 <div
                   className={`transition-all duration-1000 delay-300 ${
                     index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                 >
-                  <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-wide text-white drop-shadow-2xl">
+                  <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-wide">
                     {slide.title}
                   </h1>
-                  <p className="text-lg md:text-xl lg:text-2xl mb-2 font-light tracking-wide text-white/90 drop-shadow-xl">
+                  <p className="text-lg md:text-xl lg:text-2xl mb-2 font-light tracking-wide text-white/90">
                     {slide.subtitle}
                   </p>
                   <p
-                    className={`text-base md:text-lg lg:text-xl mb-8 font-light text-white/80 drop-shadow-lg max-w-lg ${
+                    className={`text-base md:text-lg lg:text-xl mb-8 font-light text-white/80 max-w-lg ${
                       slide.position === "right" ? "ml-auto" : ""
                     }`}
                   >
@@ -124,7 +139,7 @@ export default function Hero() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
+        className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6 text-black" />
@@ -132,7 +147,7 @@ export default function Hero() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
+        className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6 text-black" />
@@ -150,13 +165,6 @@ export default function Hero() {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center shadow-lg">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
-        </div>
       </div>
     </section>
   )
