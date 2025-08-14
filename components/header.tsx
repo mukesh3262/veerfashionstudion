@@ -3,12 +3,14 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useWishlist } from "@/contexts/wishlist-context"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
+  const { wishlistCount } = useWishlist()
 
   const isActive = (path: string) => {
     if (path === "/" && pathname === "/") return true
@@ -67,7 +69,7 @@ export default function Header() {
             >
               Fragrances
             </Link>
-            <Link
+            {/* <Link
               href="/social"
               className={`transition-colors font-medium pb-1 border-b-2 ${
                 isActive("/social")
@@ -76,7 +78,7 @@ export default function Header() {
               }`}
             >
               Social
-            </Link>
+            </Link> */}
             <Link
               href="/about"
               className={`transition-colors font-medium pb-1 border-b-2 ${
@@ -96,6 +98,21 @@ export default function Header() {
               }`}
             >
               Contact Us
+            </Link>
+            <Link
+              href="/wishlist"
+              className={`relative transition-colors font-medium pb-1 border-b-2 ${
+                isActive("/wishlist")
+                  ? "text-black border-black"
+                  : "text-gray-600 hover:text-black border-transparent hover:border-gray-300"
+              }`}
+            >
+              <Heart className="h-5 w-5" />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {wishlistCount}
+                </span>
+              )}
             </Link>
           </nav>
 
@@ -141,14 +158,14 @@ export default function Header() {
               >
                 Fragrances
               </Link>
-              <Link
+              {/* <Link
                 href="/social"
                 className={`transition-colors ${
                   isActive("/social") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
                 }`}
               >
                 Social
-              </Link>
+              </Link> */}
               <Link
                 href="/about"
                 className={`transition-colors ${
@@ -164,6 +181,15 @@ export default function Header() {
                 }`}
               >
                 Contact Us
+              </Link>
+              <Link
+                href="/wishlist"
+                className={`flex items-center gap-2 transition-colors ${
+                  isActive("/wishlist") ? "text-black font-bold" : "text-gray-600 hover:text-black font-medium"
+                }`}
+              >
+                <Heart className="h-4 w-4" />
+                Wishlist {wishlistCount > 0 && `(${wishlistCount})`}
               </Link>
             </div>
           </div>

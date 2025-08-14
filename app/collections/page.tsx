@@ -3,7 +3,9 @@
 import { useState } from "react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import ProductQuickView from "@/components/product-quick-view"
 import { Button } from "@/components/ui/button"
+import { Eye } from "lucide-react"
 
 const menCategories = [
   { id: "all", name: "All Items", count: 24 },
@@ -342,6 +344,8 @@ const menProducts = {
 export default function MenPage() {
   const [activeCategory, setActiveCategory] = useState("all")
   const [sortBy, setSortBy] = useState("name")
+  const [selectedProduct, setSelectedProduct] = useState<any>(null)
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false)
 
   const currentProducts = menProducts[activeCategory as keyof typeof menProducts] || menProducts.all
 
@@ -351,6 +355,16 @@ export default function MenPage() {
     }
     return a.name.localeCompare(b.name)
   })
+
+  const openQuickView = (product: any) => {
+    setSelectedProduct(product)
+    setIsQuickViewOpen(true)
+  }
+
+  const closeQuickView = () => {
+    setIsQuickViewOpen(false)
+    setSelectedProduct(null)
+  }
 
   return (
     <main className="min-h-screen">
@@ -382,7 +396,7 @@ export default function MenPage() {
             </div>
 
             {/* Sort Options */}
-            <div className="flex justify-center items-center gap-4 mb-8">
+            {/* <div className="flex justify-center items-center gap-4 mb-8">
               <span className="text-gray-600">Sort by:</span>
               <select
                 value={sortBy}
@@ -392,7 +406,7 @@ export default function MenPage() {
                 <option value="name">Name</option>
                 <option value="price">Price</option>
               </select>
-            </div>
+            </div> */}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -401,12 +415,22 @@ export default function MenPage() {
                 key={product.id}
                 className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
-                <div className="aspect-[3/4] overflow-hidden">
+                <div className="aspect-[3/4] overflow-hidden relative">
                   <img
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                    <Button
+                      onClick={() => openQuickView(product)}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-black hover:bg-gray-100"
+                      size="sm"
+                    >
+                      <Eye className="h-4 w-4 mr-2" />
+                      Quick View
+                    </Button>
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="font-serif text-xl font-semibold text-black mb-2 group-hover:text-gray-700 transition-colors">
@@ -435,6 +459,9 @@ export default function MenPage() {
           )}
         </div>
       </div>
+
+      <ProductQuickView product={selectedProduct} isOpen={isQuickViewOpen} onClose={closeQuickView} />
+
       <Footer />
     </main>
   )
