@@ -1,0 +1,249 @@
+{
+    "categories": [
+      { "id": 0, "name": "All Items", "count": 26 },
+      { "id": 1, "name": "T-Shirts", "count": 4 },
+      { "id": 2, "name": "Shirts", "count": 4 },
+      { "id": 3, "name": "Jeans", "count": 4 },
+      { "id": 4, "name": "Cargo Pants", "count": 4 },
+      { "id": 5, "name": "Formal Wear", "count": 4 },
+      { "id": 6, "name": "Casual Wear", "count": 3 },
+      { "id": 7, "name": "Accessories", "count": 3 }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "Classic Black Suit",
+        "description": "Premium tailored suit perfect for formal occasions",
+        "price": "$599",
+        "image": "/elegant-black-suit.png",
+        "category": 5,
+        "sizes": ["S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "id": 2,
+        "name": "White Dress Shirt",
+        "description": "Crisp cotton dress shirt with modern fit",
+        "price": "$89",
+        "image": "/placeholder-tl3i6.png",
+        "category": 2,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 3,
+        "name": "Black Leather Jacket",
+        "description": "Genuine leather jacket with contemporary styling",
+        "price": "$299",
+        "image": "/leather-jacket.png",
+        "category": 6,
+        "sizes": ["M", "L", "XL"]
+      },
+      {
+        "id": 4,
+        "name": "Charcoal Wool Coat",
+        "description": "Luxurious wool coat for sophisticated style",
+        "price": "$449",
+        "image": "/charcoal-wool-coat.png",
+        "category": 5,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 5,
+        "name": "Black Dress Pants",
+        "description": "Tailored dress pants with perfect fit",
+        "price": "$129",
+        "image": "/black-dress-pants.png",
+        "category": 5,
+        "sizes": ["30", "32", "34", "36", "38"]
+      },
+      {
+        "id": 6,
+        "name": "White Polo Shirt",
+        "description": "Classic polo shirt in premium cotton",
+        "price": "$69",
+        "image": "/white-polo-shirt.png",
+        "category": 6,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 7,
+        "name": "Blue Denim Jeans",
+        "description": "Classic fit denim jeans in premium wash",
+        "price": "$149",
+        "image": "/blue-denim-jeans.png",
+        "category": 3,
+        "sizes": ["30", "32", "34", "36", "38", "40"]
+      },
+      {
+        "id": 8,
+        "name": "Black T-Shirt",
+        "description": "Essential cotton t-shirt with perfect fit",
+        "price": "$39",
+        "image": "/black-t-shirt.png",
+        "category": 1,
+        "sizes": ["S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "id": 9,
+        "name": "Khaki Cargo Pants",
+        "description": "Utility cargo pants with multiple pockets",
+        "price": "$89",
+        "image": "/khaki-cargo-pants.png",
+        "category": 4,
+        "sizes": ["30", "32", "34", "36", "38"]
+      },
+      {
+        "id": 10,
+        "name": "Navy Blazer",
+        "description": "Sophisticated navy blazer for business casual",
+        "price": "$349",
+        "image": "/navy-blazer.png",
+        "category": 5,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 11,
+        "name": "Grey Hoodie",
+        "description": "Comfortable cotton hoodie for casual wear",
+        "price": "$79",
+        "image": "/grey-hoodie.png",
+        "category": 6,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 12,
+        "name": "Leather Belt",
+        "description": "Premium leather belt with silver buckle",
+        "price": "$59",
+        "image": "/leather-belt.png",
+        "category": 7,
+        "sizes": ["32", "34", "36", "38", "40"]
+      },
+      {
+        "id": 13,
+        "name": "White V-Neck Tee",
+        "description": "Classic v-neck t-shirt in soft cotton",
+        "price": "$35",
+        "image": "/placeholder-il9de.png",
+        "category": 1,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 14,
+        "name": "Grey Graphic Tee",
+        "description": "Trendy graphic t-shirt with modern design",
+        "price": "$45",
+        "image": "/placeholder-e27q6.png",
+        "category": 1,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 15,
+        "name": "Navy Crew Neck",
+        "description": "Premium crew neck t-shirt in navy blue",
+        "price": "$42",
+        "image": "/navy-crew-neck-tee.png",
+        "category": 1,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 16,
+        "name": "Blue Oxford Shirt",
+        "description": "Classic oxford shirt in light blue",
+        "price": "$79",
+        "image": "/blue-oxford-shirt.png",
+        "category": 2,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 17,
+        "name": "Checkered Flannel",
+        "description": "Cozy flannel shirt with checkered pattern",
+        "price": "$69",
+        "image": "/checkered-flannel-shirt.png",
+        "category": 2,
+        "sizes": ["M", "L", "XL"]
+      },
+      {
+        "id": 18,
+        "name": "Black Casual Shirt",
+        "description": "Versatile black shirt for casual occasions",
+        "price": "$65",
+        "image": "/placeholder-k0y51.png",
+        "category": 2,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 19,
+        "name": "Black Skinny Jeans",
+        "description": "Modern skinny fit jeans in black wash",
+        "price": "$139",
+        "image": "/black-skinny-jeans.png",
+        "category": 3,
+        "sizes": ["30", "32", "34", "36"]
+      },
+      {
+        "id": 20,
+        "name": "Light Wash Jeans",
+        "description": "Relaxed fit jeans in light blue wash",
+        "price": "$129",
+        "image": "/light-wash-jeans.png",
+        "category": 3,
+        "sizes": ["32", "34", "36", "38"]
+      },
+      {
+        "id": 21,
+        "name": "Dark Indigo Jeans",
+        "description": "Premium dark indigo straight fit jeans",
+        "price": "$159",
+        "image": "/dark-indigo-jeans.png",
+        "category": 3,
+        "sizes": ["30", "32", "34", "36", "38"]
+      },
+      {
+        "id": 22,
+        "name": "Black Cargo Shorts",
+        "description": "Tactical cargo shorts for summer",
+        "price": "$69",
+        "image": "/black-cargo-shorts.png",
+        "category": 4,
+        "sizes": ["S", "M", "L", "XL"]
+      },
+      {
+        "id": 23,
+        "name": "Olive Green Cargos",
+        "description": "Military-inspired cargo pants in olive",
+        "price": "$95",
+        "image": "/placeholder-8bd33.png",
+        "category": 4,
+        "sizes": ["30", "32", "34", "36"]
+      },
+      {
+        "id": 24,
+        "name": "Grey Tactical Pants",
+        "description": "Professional tactical pants with utility pockets",
+        "price": "$109",
+        "image": "/placeholder.svg?height=400&width=300",
+        "category": 4,
+        "sizes": ["32", "34", "36", "38"]
+      },
+      {
+        "id": 25,
+        "name": "Black Wallet",
+        "description": "Genuine leather wallet with card slots",
+        "price": "$79",
+        "image": "/placeholder.svg?height=400&width=300",
+        "category": 7,
+        "sizes": ["One Size"]
+      },
+      {
+        "id": 26,
+        "name": "Silver Watch",
+        "description": "Classic silver watch with leather strap",
+        "price": "$199",
+        "image": "/placeholder.svg?height=400&width=300",
+        "category": 7,
+        "sizes": ["One Size"]
+      }
+    ]
+  }
+  

@@ -12,6 +12,7 @@ interface Product {
   price: string
   image: string
   category: string
+  sizes?: string[] // Added sizes property
   images?: string[]
 }
 
@@ -23,6 +24,7 @@ interface ProductQuickViewProps {
 
 export default function ProductQuickView({ product, isOpen, onClose }: ProductQuickViewProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [selectedSize, setSelectedSize] = useState<string>("") // Added selected size state
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist()
 
   if (!isOpen || !product) return null
@@ -140,6 +142,27 @@ export default function ProductQuickView({ product, isOpen, onClose }: ProductQu
               <p className="text-gray-600 leading-relaxed">{product.description}</p>
             </div>
 
+            {product.sizes && product.sizes.length > 0 && (
+              <div className="space-y-3">
+                <h3 className="font-semibold text-black">Available Sizes:</h3>
+                <div className="flex flex-wrap gap-2">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => setSelectedSize(size)}
+                      className={`px-4 py-2 border rounded-md transition-all duration-200 ${
+                        selectedSize === size
+                          ? "bg-black text-white border-black"
+                          : "bg-white text-black border-gray-300 hover:border-black"
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Product Features */}
             <div className="space-y-3">
               <h3 className="font-semibold text-black">Features:</h3>
@@ -149,21 +172,6 @@ export default function ProductQuickView({ product, isOpen, onClose }: ProductQu
                 <li>• Available in multiple sizes</li>
                 <li>• Easy care instructions</li>
               </ul>
-            </div>
-
-            {/* Size Guide */}
-            <div className="space-y-3">
-              <h3 className="font-semibold text-black">Available Sizes:</h3>
-              <div className="flex gap-2">
-                {["XS", "S", "M", "L", "XL", "XXL"].map((size) => (
-                  <button
-                    key={size}
-                    className="px-3 py-2 border border-gray-300 rounded hover:border-black transition-colors"
-                  >
-                    {size}
-                  </button>
-                ))}
-              </div>
             </div>
 
             {/* Action Buttons */}
