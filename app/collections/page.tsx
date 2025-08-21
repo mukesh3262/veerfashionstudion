@@ -185,25 +185,7 @@ export default function MenPage() {
                             />
                           </div>
                         </div>
-                        <div className="text-center">
-                          <span className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
-                            ${priceRange.min} - ${priceRange.max}
-                          </span>
-                        </div>
                       </div>
-                    </div>
-
-                    <div className="mb-6">
-                      <h3 className="font-medium text-black mb-4">Sort By</h3>
-                      <select
-                        value={sortBy}
-                        onChange={(e) => setSortBy(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent text-sm"
-                      >
-                        <option value="name">Name (A-Z)</option>
-                        <option value="price-low">Price (Low to High)</option>
-                        <option value="price-high">Price (High to Low)</option>
-                      </select>
                     </div>
 
                     <div className="pt-4 border-t border-gray-200">
